@@ -1,6 +1,7 @@
 {
-    "name": "performance-engine/logger",
-    "description": "GrayLog2 logger for performance engine",
+    "name": "performance-engine/logger-bundle",
+    "description": "GrayLog2 logger bundle for performance engine",
+    "type": "symfony-bundle",
     "license": "MIT",
     "require": {
         "monolog/monolog": "dev-master",
