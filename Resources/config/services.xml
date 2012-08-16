@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="monolog.handler.gelf.class">Monolog\Handler\GelfHandler</parameter>
+        <parameter key="monolog.handler.gelf.debug_level">200</parameter> <!-- since we can not use strings here, we have to use the integer value of the debug levels, 200 is deubbing level INFO -->
+
+        <parameter key="gelf.publisher.class">Gelf\MessagePublisher</parameter>
+        <parameter key="graylog.hostname">localhost</parameter>
+        <parameter key="graylog.port">12201</parameter>
+    </parameters>
+
+    <services>
+        <service id="gelf.publisher" class="%gelf.publisher.class%">
+            <argument>%graylog.hostname%</argument>
+            <argument>%graylog.port%</argument>
+        </service>
+
+        <service id="monolog.gelf_handler" class="%monolog.handler.gelf.class%">
+            <argument type="service" id="gelf.publisher" />
+            <argument>%monolog.handler.gelf.debug_level%</argument>
+        </service>
+    </services>
+
+</container>

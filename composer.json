@@ -12,5 +12,9 @@
             "name": "Yura Rodchyn",
             "email": "rodchyn@gmail.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-0": { "PerformanceEngine\\Bundle\\LoggerBundle": "" }
+    },
+    "target-dir": "PerformanceEngine/Bundle/LoggerBundle"
 }
